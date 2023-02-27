@@ -11,7 +11,8 @@ const Sidebar = () => {
   const { 
     activeMenu, 
     setActiveMenu, 
-    screenSize 
+    screenSize,
+    currentColor
   } = useStateContext();
 
   const handleCloseSideBar = () => {
@@ -53,7 +54,11 @@ const Sidebar = () => {
                   to={`/${link.name}`}
                   key={link.name}
                   onClick={handleCloseSideBar}
-                  className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                  style={({ isActive }) => ({
+                    backgroundColor: isActive ? currentColor : ''
+                  })}
+                  className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                >
                   {link.icon}
                   <span className="capitalize">
                     {link.name}
